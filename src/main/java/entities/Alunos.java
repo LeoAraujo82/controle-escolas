@@ -14,15 +14,22 @@ public class Alunos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private Integer id;
     private String nome;
-    private String email;
+    private double matricula;
+    @OneToMany(mappdBy = "aluno", cascade = CascadeType.ALL)
+    private List<CasdatroAlunos> cadastro = new ArrayList<>();
 
-    public Alunos(Long id, String nome, String email) {
+    public List<CadastroAlunos> getCadastro() {
+        return cadastro;
+    }
+
+        public Alunos(Integer id, String nome, double matricula) {
         this.id = id;
         this.nome = nome;
-        this.email = email;
+        this.matricula = matricula;
+
+
     }
 
 
